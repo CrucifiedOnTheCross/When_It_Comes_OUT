@@ -1,10 +1,9 @@
 package com.sulfur.parsingservice.repository;
 
-import com.sulfur.parsingservice.model.Entity;
+import com.sulfur.parsingservice.model.MovieEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EntityRepository extends JpaRepository<Entity, Long> {
-    Entity findByName(String name);
+public interface MovieRepository extends JpaRepository<MovieEntity, Long> {
 }

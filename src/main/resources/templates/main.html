@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When It Comes Out</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+<div th:replace="~{parts/nav :: nav}"></div>
+
+<div class="content col">
+    <h1>Новинки</h1>
+    <div class="grid">
+        <div th:each="card : ${infoCards}" class="info-card">
+            <a th:href="@{/{type}/{id}(type=${card.type}, id=${card.id})}">
+                <img th:src="${card.imgURL}" alt="Null image">
+                <div class="info">
+                    <h2 th:text="${card.name}">Title: Your Game Title</h2>
+                    <span th:text="${card.date}">Release Date: MM/DD/YYYY</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

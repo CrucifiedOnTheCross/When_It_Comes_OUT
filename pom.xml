@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.sulfur</groupId>
     <artifactId>ParsingService</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>When It Comes OUT</name>
     <description>When It Comes OUT</description>
     <properties>
@@ -49,7 +49,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
     </dependencies>
 
@@ -69,5 +69,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

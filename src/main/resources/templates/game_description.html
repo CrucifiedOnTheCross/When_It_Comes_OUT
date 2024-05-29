@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When It Comes Out</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+<div th:replace="~{parts/nav :: nav}"></div>
+<h1 th:text="${game.name}">Game Name</h1>
+<p th:text="${game.summary}">Game Summary</p>
+<p th:text="${game.date}">Release Date</p>
+<p th:text="${game.imgURL}">Image URL</p>
+<ul th:each="platform : ${game.platforms}">
+    <li th:text="${platform}">Platform</li>
+</ul>
+<ul th:each="genre : ${game.genres}">
+    <li th:text="${genre}">Genre</li>
+</ul>
+</body>
+</html>
