@@ -137,7 +137,6 @@ nav {
     overflow: hidden;
     transition: all 0.5s ease;
     background-color: var(--secondary-color);
-    height: 559px;
 }
 
 .info-card:hover {

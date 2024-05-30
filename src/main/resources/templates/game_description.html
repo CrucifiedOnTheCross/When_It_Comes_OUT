@@ -9,15 +9,30 @@
 </head>
 <body>
 <div th:replace="~{parts/nav :: nav}"></div>
-<h1 th:text="${game.name}">Game Name</h1>
-<p th:text="${game.summary}">Game Summary</p>
-<p th:text="${game.date}">Release Date</p>
-<p th:text="${game.imgURL}">Image URL</p>
-<ul th:each="platform : ${game.platforms}">
-    <li th:text="${platform}">Platform</li>
-</ul>
-<ul th:each="genre : ${game.genres}">
-    <li th:text="${genre}">Genre</li>
-</ul>
+
+<div class="content">
+    <div class="col">
+        <div class="col-left">
+            <img th:src="${game.imgURL}" class="img-fluid">
+        </div>
+        <div class="col-right">
+            <h1 th:text="${game.name}">Game Name</h1>
+            <p th:text="${'Summary: ' + game.summary}">Game Summary</p>
+            <p th:text="${'Date: ' + game.date}">Release Date</p>
+
+            <p>Platform:</p>
+            <ul th:each="platform : ${game.platforms}">
+                <li th:text="${platform}">Platform</li>
+            </ul>
+
+            <p>Genre:</p>
+            <ul th:each="genre : ${game.genres}">
+                <li th:text="${genre}">Genre</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
