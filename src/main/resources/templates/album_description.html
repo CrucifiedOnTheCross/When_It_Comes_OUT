@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When It Comes Out</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+<div th:replace="~{parts/nav :: nav}"></div>
+
+<div class="content col">
+    <h1 th:text="${album.name}">Album Name</h1>
+    <div class="row">
+        <div class="col-left">
+            <img th:src="${album.imgURL}" class="img-fluid rounded">
+        </div>
+        <div class="col-right">
+            <p th:text="${'Author: ' + album.author}">Game Summary</p>
+            <p th:text="${'Date: ' + album.date}">Release Date</p>
+
+            <ul class="list-unstyled">
+                <p>Tags:</p>
+                <li th:each="platform : ${album.tags}">
+                    <span th:text="${platform}">Platform</span>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled">
+                <p>Track list:</p>
+                <li th:each="genre : ${album.trackList}">
+                    <span th:text="${genre}">Genre</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

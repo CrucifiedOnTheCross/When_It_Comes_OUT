@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When It Comes Out</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+<div th:replace="~{parts/nav :: nav}"></div>
+
+<div class="content col">
+    <h1 th:text="${anime.name}">Album Name</h1>
+    <div class="row">
+        <div class="col-left">
+            <img th:src="${anime.imgURL}" class="img-fluid rounded">
+        </div>
+        <div class="col-right">
+            <p th:text="${'Type: ' + anime.type}">Game Summary</p>
+            <p th:text="${'Studio: ' + anime.studio}">Release Date</p>
+            <p th:text="${'Date: ' + anime.date}">Release Date</p>
+            <p th:text="${'Duration: ' + anime.duration}">Release Date</p>
+            <p th:text="${'Rating: ' + anime.rating}">Release Date</p>
+
+            <ul class="list-unstyled">
+                <p>Genres:</p>
+                <li th:each="platform : ${anime.genres}">
+                    <span th:text="${platform}">Platform</span>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled">
+                <p>Topics:</p>
+                <li th:each="genre : ${anime.topics}">
+                    <span th:text="${genre}">Genre</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
