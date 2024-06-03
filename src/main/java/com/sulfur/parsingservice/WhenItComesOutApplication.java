@@ -40,23 +40,51 @@ public class WhenItComesOutApplication implements CommandLineRunner {
 //        ArrayList<GameData> gameData = dataJsonReader.readJsonData("src/main/java/com/sulfur/parsingservice/json/Game_test.json", GameData.class);
 //        ArrayList<MovieData> movieData = dataJsonReader.readJsonData("src/main/java/com/sulfur/parsingservice/json/Movie_test.json", MovieData.class);
 //        ArrayList<AlbumData> albumData = dataJsonReader.readJsonData("src/main/java/com/sulfur/parsingservice/json/Album_test.json", AlbumData.class);
-
-//        for (GameData gameData1 : gameData) {
+//
+//        ArrayList<AnimeData> filteredAnimeData = new ArrayList<>();
+//        for (AnimeData anime : animeData) {
+//            if (anime.getDate().matches("\\d{2}\\.\\d{2}\\.\\d{4}")) {
+//                filteredAnimeData.add(anime);
+//            }
+//        }
+//
+//        ArrayList<GameData> filteredGameData = new ArrayList<>();
+//        for (GameData game : gameData) {
+//            if (game.getDate().matches("\\d{2}\\.\\d{2}\\.\\d{4}")) {
+//                filteredGameData.add(game);
+//            }
+//        }
+//
+//        ArrayList<MovieData> filteredMovieData = new ArrayList<>();
+//        for (MovieData movie : movieData) {
+//            if (movie.getDate().matches("\\d{2}\\.\\d{2}\\.\\d{4}")) {
+//                filteredMovieData.add(movie);
+//            }
+//        }
+//
+//        ArrayList<AlbumData> filteredAlbumData = new ArrayList<>();
+//        for (AlbumData album : albumData) {
+//            if (album.getDate().matches("\\d{2}\\.\\d{2}\\.\\d{4}")) {
+//                filteredAlbumData.add(album);
+//            }
+//        }
+//
+//        for (GameData gameData1 : filteredGameData) {
 //            gameService.addGame(gameData1);
 //            System.out.println("Game added: " + gameData1);
 //        }
-
-//        for (AnimeData animeData1 : animeData) {
+//
+//        for (AnimeData animeData1 : filteredAnimeData) {
 //            animeService.addAnime(animeData1);
 //            System.out.println("Anime added: " + animeData1);
 //        }
-
-//        for (MovieData movieData1 : movieData) {
+//
+//        for (MovieData movieData1 : filteredMovieData) {
 //            movieService.addMovie(movieData1);
 //            System.out.println("Movie added: " + movieData1);
 //        }
-
-//        for (AlbumData albumData1 : albumData) {
+//
+//        for (AlbumData albumData1 : filteredAlbumData) {
 //            albumService.addAlbum(albumData1);
 //            System.out.println("Album added: " + albumData1);
 //        }

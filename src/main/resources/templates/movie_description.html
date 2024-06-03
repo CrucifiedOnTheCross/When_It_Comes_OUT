@@ -11,26 +11,19 @@
 <div th:replace="~{parts/nav :: nav}"></div>
 
 <div class="content col">
-    <h1 th:text="${game.name}">Game Name</h1>
+    <h1 th:text="${movie.name}">Game Name</h1>
     <div class="row">
         <div class="col-left">
-            <img th:src="${game.imgURL}" class="img-fluid rounded">
+            <img th:src="${movie.imgURL}" class="img-fluid rounded">
         </div>
         <div class="col-right">
-            <p th:text="${'Summary: ' + game.summary}">Game Summary</p>
-            <p th:text="${'Date: ' + game.date}">Release Date</p>
+            <p th:text="${'Summary: ' + movie.summary}">Game Summary</p>
+            <p th:text="${'Date: ' + movie.date}">Release Date</p>
 
             <ul class="list-unstyled">
-                <p>Platform:</p>
-                <li th:each="platform : ${game.platforms}">
+                <p>Genres:</p>
+                <li th:each="platform : ${movie.genres}">
                     <span th:text="${platform}">Platform</span>
-                </li>
-            </ul>
-
-            <ul class="list-unstyled">
-                <p>Genre:</p>
-                <li th:each="genre : ${game.genres}">
-                    <span th:text="${genre}">Genre</span>
                 </li>
             </ul>
         </div>

@@ -8,6 +8,8 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -28,18 +30,19 @@ public class AnimeService {
         AnimeEntity animeEntity = new AnimeEntity();
         animeEntity.setName(animeData.getName());
         animeEntity.setType(animeData.getType());
-        animeEntity.setDate(animeData.getDate());
+        String dateString = animeData.getDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDate date = LocalDate.parse(dateString, formatter);
+        animeEntity.setDate(date);
         animeEntity.setDuration(animeData.getDuration());
         animeEntity.setRating(animeData.getRating());
         animeEntity.setStudio(animeData.getStudio());
         animeEntity.setImgURL(animeData.getImgURL());
 
-        // Устанавливаем жанры, если они не пустые
         if (Objects.nonNull(animeData.getGenres())) {
             animeEntity.setGenres(Arrays.asList(animeData.getGenres()));
         }
 
-        // Устанавливаем топики, если они не пустые
         if (Objects.nonNull(animeData.getTopics())) {
             animeEntity.setTopics(Arrays.asList(animeData.getTopics()));
         }
@@ -52,5 +55,9 @@ public class AnimeService {
         TypedQuery<AnimeEntity> query = entityManager.createQuery(jpql, AnimeEntity.class);
         query.setMaxResults(count);
         return query.getResultList();
+    }
+
+    public AnimeEntity getAnimeEntityById(Long id) {
+        return entityManager.find(AnimeEntity.class, id);
     }
 }

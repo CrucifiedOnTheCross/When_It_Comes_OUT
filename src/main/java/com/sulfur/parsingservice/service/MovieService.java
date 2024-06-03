@@ -9,6 +9,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +37,10 @@ public class MovieService {
             movieEntity.setProducers(Arrays.asList(movieData.getProducers()));
         }
 
-        movieEntity.setDate(movieData.getDate());
+        String dateString = movieData.getDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDate date = LocalDate.parse(dateString, formatter);
+        movieEntity.setDate(date);
 
         // Устанавливаем жанры, если они не пустые
         if (Objects.nonNull(movieData.getGenres())) {
@@ -45,6 +50,7 @@ public class MovieService {
         movieEntity.setSummary(movieData.getSummary());
         movieEntity.setImgURL(movieData.getImgURL());
 
+        System.out.println(movieEntity);
         movieRepository.save(movieEntity);
     }
 
@@ -54,5 +60,10 @@ public class MovieService {
         TypedQuery<MovieEntity> query = entityManager.createQuery(jpql, MovieEntity.class);
         query.setMaxResults(count);
         return query.getResultList();
+    }
+
+    @Transactional
+    public MovieEntity getMovieEntityById(Long id) {
+        return entityManager.find(MovieEntity.class, id);
     }
 }

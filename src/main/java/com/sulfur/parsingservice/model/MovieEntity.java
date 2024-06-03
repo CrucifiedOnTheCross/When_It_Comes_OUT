@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class MovieEntity {
     @ElementCollection
     private List<String> producers;
 
-    private String date;
+    private LocalDate date;
 
     @ElementCollection
     private List<String> genres;

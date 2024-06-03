@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class AnimeEntity {
     private String name;
 
     private String type;
-    private String date;
+    private LocalDate date;
     private String duration;
 
     @ElementCollection

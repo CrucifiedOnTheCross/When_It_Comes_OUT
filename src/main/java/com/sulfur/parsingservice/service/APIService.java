@@ -29,34 +29,28 @@ public class APIService {
     }
 
     public List<InfoCard> getNewestTitle(int maxSize) {
-        List<InfoCard> newestTitles = new ArrayList<>();
 
-        // Get newest anime
         List<AnimeEntity> newestAnime = animeService.getNewestAnime(maxSize);
-        newestTitles.addAll(newestAnime.stream()
-                .map(anime -> new InfoCard(anime.getId(), anime.getName(), anime.getDate(), anime.getImgURL(), "anime"))
-                .collect(Collectors.toList()));
+        List<InfoCard> newestTitles = new ArrayList<>(newestAnime.stream()
+                .map(anime -> new InfoCard(anime.getId(), anime.getName(), anime.getDate().toString(), anime.getImgURL(), "anime"))
+                .toList());
 
-        // Get newest album
         List<AlbumEntity> newestAlbum = albumService.getNewestAlbum(maxSize);
         newestTitles.addAll(newestAlbum.stream()
-                .map(album -> new InfoCard(album.getId(), album.getName(), album.getDate(), album.getImgURL(), "album"))
-                .collect(Collectors.toList()));
+                .map(album -> new InfoCard(album.getId(), album.getName(), album.getDate().toString(), album.getImgURL(), "album"))
+                .toList());
 
-        // Get newest game
         List<GameEntity> newestGame = gameService.getNewestGame(maxSize);
         newestTitles.addAll(newestGame.stream()
-                .map(game -> new InfoCard(game.getId(), game.getName(), game.getDate(), game.getImgURL(), "game"))
-                .collect(Collectors.toList()));
+                .map(game -> new InfoCard(game.getId(), game.getName(), game.getDate().toString(), game.getImgURL(), "game"))
+                .toList());
 
-        // Get newest movie
         List<MovieEntity> newestMovie = movieService.getNewestMovie(maxSize);
         newestTitles.addAll(newestMovie.stream()
-                .map(movie -> new InfoCard(movie.getId(), movie.getName(), movie.getDate(), movie.getImgURL(), "movie"))
-                .collect(Collectors.toList()));
+                .map(movie -> new InfoCard(movie.getId(), movie.getName(), movie.getDate().toString(), movie.getImgURL(), "movie"))
+                .toList());
 
 
-        // Sort by date and take top 10
         return newestTitles.stream()
                 .sorted(Comparator.comparing(InfoCard::getDate).reversed())
                 .limit(maxSize)
